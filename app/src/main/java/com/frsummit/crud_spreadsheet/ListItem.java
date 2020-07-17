@@ -40,14 +40,11 @@ public class ListItem extends Activity {
     }
 
     private void getItems() {
-        System.out.println("Working");
         loading =  ProgressDialog.show(this,"Loading","please wait",false,true);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://script.google.com/macros/s/AKfycbw0lXmfX5kz3ZGM8P-G5hy4-sK-ewRbIHKUpaLj0IfWiROEhhtA/exec" + "?action=getItems",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("Response");
-                        System.out.println(response);
                         parseItems(response);
                     }
                 },
@@ -57,8 +54,6 @@ public class ListItem extends Activity {
                     }
                 }
         );
-        System.out.println("stringRequest done");
-        System.out.println(stringRequest);
 
         int socketTimeOut = 50000;
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
