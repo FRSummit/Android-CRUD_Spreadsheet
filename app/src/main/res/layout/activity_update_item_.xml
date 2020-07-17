@@ -114,10 +114,10 @@
         android:layout_below="@id/rl_text_sec">
 
         <Button
-            android:id="@+id/updateItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Update"/>
+            android:text="Update"
+            android:onClick="updateItemBtnClick"/>
 
 
     </RelativeLayout>
