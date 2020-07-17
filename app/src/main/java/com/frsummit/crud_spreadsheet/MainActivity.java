@@ -22,6 +22,10 @@ public class MainActivity extends Activity {
     public void btnClick(View view) {
         startActivity(new Intent(this, AddItem.class));
     }
+
+    public void listItemBtnClick(View view) {
+        startActivity(new Intent(this, ListItem.class));
+    }
 }
 
 /**

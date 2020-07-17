@@ -40,7 +40,7 @@ public class AddItem extends Activity {
     }
 
     private void addItemToSheet() {
-        final ProgressDialog loading = ProgressDialog.show(this,"Adding Item","Please wait");
+        final ProgressDialog loading = ProgressDialog.show(this, "Adding Item", "Please wait");
         final String name = editTextItemName.getText().toString().trim();
         final String brand = editTextBrand.getText().toString().trim();
 
@@ -48,41 +48,35 @@ public class AddItem extends Activity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         loading.dismiss();
-                        Toast.makeText(AddItem.this,response,Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        Toast.makeText(AddItem.this, response, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Toast.makeText(AddItem.this, "or error response", Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parmas = new HashMap<>();
-
                 //here we pass params
-                parmas.put("action","addItem");
-                parmas.put("itemName",name);
-                parmas.put("brand",brand);
+                parmas.put("action", "addItem");
+                parmas.put("itemName", name);
+                parmas.put("brand", brand);
 
                 return parmas;
             }
         };
 
         int socketTimeOut = 50000;// u can change this .. here it is 50 seconds
-
         RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
-
         RequestQueue queue = Volley.newRequestQueue(this);
-
         queue.add(stringRequest);
     }
 }
