@@ -34,4 +34,6 @@ public class MainActivity extends Activity {
  * https://www.crazycodersclub.com/android/how-to-use-google-sheet-as-database-for-android-app-1-insert-operation/
  * https://www.youtube.com/watch?v=v2Az8yIU1lE
  *
+ * https://developers.google.com/apps-script/reference/spreadsheet/sheet
+ *
  */

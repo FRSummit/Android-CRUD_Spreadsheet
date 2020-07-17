@@ -4,33 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
     tools:context=".ItemDetails">
 
     <RelativeLayout
         android:id="@+id/rl_1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:minWidth="300dp">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/itemId_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="112dp"
-            android:text=" Item Name :"
+            android:minWidth="60dp"
+            android:text="Id :"
             android:textColor="#000"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/itemId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="60dp"
-            android:text=" Item Id :"
+            android:text="Id :"
+            android:layout_marginLeft="50dp"
             android:textColor="#000"
             android:textSize="20dp"
-            android:layout_toRightOf="@id/textView4"/>
+            android:layout_toRightOf="@id/itemId_text"/>
 
     </RelativeLayout>
 
@@ -38,80 +38,128 @@
         android:id="@+id/rl_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="300dp"
         android:layout_below="@id/rl_1">
 
         <TextView
-            android:id="@+id/tv_item_name"
+            android:id="@+id/itemName_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="92dp"
-            android:layout_marginTop="112dp"
-            android:text="name"
+            android:minWidth="60dp"
+            android:text="Name"
             android:textColor="#000"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/tv_id"
+            android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="124dp"
-            android:layout_marginTop="60dp"
-            android:text="id"
+            android:text="Name"
+            android:layout_marginLeft="50dp"
             android:textColor="#000"
             android:textSize="20dp"
-            android:layout_toRightOf="@id/tv_item_name"/>
+            android:layout_toRightOf="@id/itemName_text"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="300dp"
         android:layout_below="@id/rl_2">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/itemBrand_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
+            android:minWidth="60dp"
             android:text="Brand :"
             android:textColor="#000"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/tv_brand"
+            android:id="@+id/itemBrand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:text="brand"
+            android:layout_marginLeft="50dp"
+            android:text="Brand"
             android:textColor="#000"
             android:textSize="20dp"
-            android:layout_toRightOf="@id/textView6"/>
+            android:layout_toRightOf="@id/itemBrand_text"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="300dp"
         android:layout_below="@id/rl_3">
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/itemPrice_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:minWidth="60dp"
             android:text="Price :"
             android:textColor="#000"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/tv_price"
+            android:id="@+id/itemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="price"
+            android:layout_marginLeft="50dp"
+            android:text="Price"
             android:textColor="#000"
             android:textSize="20dp"
-            android:layout_toRightOf="@id/textView8"/>
+            android:layout_toRightOf="@id/itemPrice_text"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/rl_4">
+
+        <TextView
+            android:id="@+id/sheetDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textColor="#000"
+            android:textSize="20dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/rl_5">
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Update Item"
+            android:onClick="UpdateBtnClick"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/rl_6">
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Delete Item"
+            android:onClick="deleteBtnClick"/>
     </RelativeLayout>
 
 </RelativeLayout>

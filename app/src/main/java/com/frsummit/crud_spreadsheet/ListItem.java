@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -33,6 +34,8 @@ public class ListItem extends Activity {
     ListView listView;
     ListAdapter adapter;
     ProgressDialog loading;
+    Button deleteBtn;
+    ArrayList<Item> itemList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,29 @@ public class ListItem extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ListItem.this, "No Name ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListItem.this, itemList.get(position).getId(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), ItemDetails.class);
+                HashMap<String, String> map = (HashMap) parent.getItemAtPosition(position);
+                String date = map.get("date").toString();
+                String sheetId = map.get("sheetId").toString();
+                String itemId = map.get("itemId").toString();
+                String itemName = map.get("itemName").toString();
+                String brand = map.get("brand").toString();
+                String price = map.get("price").toString();
+
+
+                // String sno = map.get("sno").toString();
+
+                // Log.e("SNO test",sno);
+                intent.putExtra("date", date);
+                intent.putExtra("sheetId", sheetId);
+                intent.putExtra("itemId", itemId);
+                intent.putExtra("itemName", itemName);
+                intent.putExtra("brand", brand);
+                intent.putExtra("price", price);
+
+                startActivity(intent);
             }
         });
         getItems();
@@ -81,18 +106,27 @@ public class ListItem extends Activity {
 
             for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jo = jarray.getJSONObject(i);
-//                String itemId = jo.getString("itemId"); // To display item details
+                String date = jo.getString("date");
+                String sheetId = jo.getString("id");
+                String itemId = jo.getString("itemId");
                 String itemName = jo.getString("itemName");
                 String brand = jo.getString("brand");
                 String price = jo.getString("price");
 
                 HashMap<String, String> item = new HashMap<>();
-//                item.put("itemId", itemId); // To display item details
+                item.put("date", date);
+                item.put("sheetId", sheetId);
+                item.put("itemId", itemId);
                 item.put("itemName", itemName);
                 item.put("brand", brand);
                 item.put("price", price);
 
                 list.add(item);
+
+                /*******************************************/
+                Item my_item = new Item(itemId, itemName, brand, price);
+                itemList.add(my_item);
+                /*******************************************/
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -101,25 +135,4 @@ public class ListItem extends Activity {
         listView.setAdapter(adapter);
         loading.dismiss();
     }
-
-//    // To display item details
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Intent intent = new Intent(this, ItemDetails.class);
-//        HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
-//        String itemId = map.get("itemId").toString();
-//        String itemName = map.get("itemName").toString();
-//        String brand = map.get("brand").toString();
-//        String price = map.get("price").toString();
-//
-//
-//        // String sno = map.get("sno").toString();
-//
-//        // Log.e("SNO test",sno);
-//        intent.putExtra("itemId",itemId);
-//        intent.putExtra("itemName",itemName);
-//        intent.putExtra("brand",brand);
-//        intent.putExtra("price",price);
-//
-//        startActivity(intent);
-//    }
 }

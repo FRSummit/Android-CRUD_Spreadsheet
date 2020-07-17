@@ -23,15 +23,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddItem extends Activity {
-    EditText editTextItemName, editTextBrand;
+    EditText editTextItemId, editTextItemName, editTextBrand, editTextPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
+        editTextItemId = (EditText) findViewById(R.id.et_item_id);
         editTextItemName = (EditText) findViewById(R.id.et_item_name);
         editTextBrand = (EditText) findViewById(R.id.et_brand);
+        editTextPrice = (EditText) findViewById(R.id.et_price);
     }
 
     public void addItemClick(View view) {
@@ -41,8 +43,10 @@ public class AddItem extends Activity {
 
     private void addItemToSheet() {
         final ProgressDialog loading = ProgressDialog.show(this, "Adding Item", "Please wait");
+        final String id = editTextItemId.getText().toString().trim();
         final String name = editTextItemName.getText().toString().trim();
         final String brand = editTextBrand.getText().toString().trim();
+        final String price = editTextPrice.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://script.google.com/macros/s/AKfycbw0lXmfX5kz3ZGM8P-G5hy4-sK-ewRbIHKUpaLj0IfWiROEhhtA/exec", //Web App URL
                 new Response.Listener<String>() {
@@ -66,8 +70,10 @@ public class AddItem extends Activity {
                 Map<String, String> parmas = new HashMap<>();
                 //here we pass params
                 parmas.put("action", "addItem");
+                parmas.put("itemId", id);
                 parmas.put("itemName", name);
                 parmas.put("brand", brand);
+                parmas.put("price", price);
 
                 return parmas;
             }
