@@ -14,7 +14,6 @@
         android:layout_marginTop="194dp"
         android:text="Add Item"
         android:onClick="btnClick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
